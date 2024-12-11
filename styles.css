@@ -1,0 +1,194 @@
+:root[data-theme="dark"] {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --section-bg: rgba(20, 0, 0, 0.3);
+    --card-bg: rgba(50, 0, 0, 0.2);
+    --card-hover-bg: rgba(80, 0, 0, 0.3);
+    --border-color: rgba(255, 0, 0, 0.1);
+    --subtitle-color: #ff9999;
+    --heading-color: #ffcccc;
+    --cite-color: #ff8080;
+}
+
+:root[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --section-bg: rgba(255, 240, 240, 0.3);
+    --card-bg: rgba(255, 230, 230, 0.2);
+    --card-hover-bg: rgba(255, 200, 200, 0.3);
+    --border-color: rgba(255, 0, 0, 0.1);
+    --subtitle-color: #cc0000;
+    --heading-color: #990000;
+    --cite-color: #800000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    backdrop-filter: blur(5px);
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.theme-toggle-dark,
+.theme-toggle-light {
+    position: absolute;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+[data-theme="dark"] .theme-toggle-dark,
+[data-theme="light"] .theme-toggle-light {
+    opacity: 1;
+    transform: scale(1);
+}
+
+[data-theme="dark"] .theme-toggle-light,
+[data-theme="light"] .theme-toggle-dark {
+    opacity: 0;
+    transform: scale(0);
+}
+
+#vanta-bg {
+    position: fixed;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    backdrop-filter: blur(8px);
+    background-color: var(--section-bg);
+    border-radius: 15px;
+    margin-bottom: 4rem;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--border-color);
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    text-shadow: 0 0 8px var(--border-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--heading-color);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+    color: var(--subtitle-color);
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--section-bg);
+}
+
+.feature-grid, .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-card, .testimonial-card {
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.feature-card:hover, .testimonial-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--card-hover-bg);
+}
+
+.testimonial-card {
+    text-align: center;
+}
+
+.testimonial-card cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: italic;
+    opacity: 0.8;
+    color: var(--cite-color);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    section {
+        padding: 2rem 1rem;
+    }
+}
